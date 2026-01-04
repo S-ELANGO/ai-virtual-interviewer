@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Obsidian Theme - Deep Dark with Purple/Pink Accents */
+    --background: 240 6% 9%;
+    --foreground: 0 0% 100%;
+
+    --card: 240 6% 12%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 6% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 263 70% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 6% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 6% 20%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 330 80% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 263 70% 58%;
+
+    --radius: 1rem;
+
+    /* Custom Colors */
+    --obsidian: 240 6% 9%;
+    --obsidian-light: 240 6% 14%;
+    --purple-glow: 263 70% 58%;
+    --pink-glow: 330 80% 60%;
+    --zinc-text: 240 5% 65%;
+
+    /* Glassmorphism */
+    --glass-bg: 240 6% 100% / 0.05;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-blur: 20px;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(263 70% 58%), hsl(330 80% 60%));
+    --gradient-glow: radial-gradient(circle, hsl(263 70% 58% / 0.3), transparent 70%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 60px hsl(263 70% 58% / 0.3);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.3);
+
+    --sidebar-background: 240 6% 9%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 263 70% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 6% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 6% 20%;
+    --sidebar-ring: 263 70% 58%;
+  }
+
+  .dark {
+    --background: 240 6% 9%;
+    --foreground: 0 0% 100%;
+    --card: 240 6% 12%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 6% 12%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 263 70% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 6% 18%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 6% 20%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 330 80% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 20%;
+    --input: 240 6% 20%;
+    --ring: 263 70% 58%;
+    --sidebar-background: 240 6% 9%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 263 70% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 6% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 6% 20%;
+    --sidebar-ring: 263 70% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl;
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-card);
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, hsl(0 0% 100% / 0.1), transparent);
+    pointer-events: none;
+  }
+
+  /* Glow Effects */
+  .glow-purple {
+    box-shadow: 0 0 40px hsl(263 70% 58% / 0.4);
+  }
+
+  .glow-pink {
+    box-shadow: 0 0 40px hsl(330 80% 60% / 0.4);
+  }
+
+  /* Text Gradient */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Button Variants */
+  .btn-primary {
+    @apply relative overflow-hidden px-8 py-4 rounded-xl font-semibold transition-all duration-300;
+    background: var(--gradient-primary);
+    box-shadow: 0 4px 20px hsl(263 70% 58% / 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px hsl(263 70% 58% / 0.5);
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .btn-secondary:hover {
+    background: hsl(0 0% 100% / 0.1);
+    border-color: hsl(var(--primary));
+  }
+
+  /* Progress Bar */
+  .progress-track {
+    @apply h-2 rounded-full overflow-hidden;
+    background: hsl(var(--muted));
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+    background: var(--gradient-primary);
+  }
+
+  /* Upload Zone */
+  .upload-zone {
+    @apply relative rounded-2xl p-8 transition-all duration-300 cursor-pointer;
+    background: hsl(var(--glass-bg));
+    border: 2px dashed hsl(var(--border));
+  }
+
+  .upload-zone:hover,
+  .upload-zone.drag-over {
+    border-color: hsl(var(--primary));
+    background: hsl(263 70% 58% / 0.1);
+  }
+
+  /* Animated Blob Keyframes */
+  @keyframes blob1 {
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+
+    50% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    75% {
+      transform: translate(50px, 50px) scale(1.05);
+    }
+  }
+
+  @keyframes blob2 {
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    25% {
+      transform: translate(-40px, 30px) scale(0.95);
+    }
+
+    50% {
+      transform: translate(30px, -40px) scale(1.1);
+    }
+
+    75% {
+      transform: translate(-20px, -30px) scale(1);
+    }
+  }
+
+  @keyframes blob3 {
+
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+      transform: translate(40px, 20px) scale(1.05);
+    }
+
+    66% {
+      transform: translate(-30px, -40px) scale(0.95);
+    }
+  }
+
+  .animate-blob1 {
+    animation: blob1 20s ease-in-out infinite;
+  }
+
+  .animate-blob2 {
+    animation: blob2 25s ease-in-out infinite;
+  }
+
+  .animate-blob3 {
+    animation: blob3 18s ease-in-out infinite;
+  }
+
+  /* Pulse Animation for Recording */
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .pulse-ring {
+    animation: pulse-ring 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Score Circle Animation */
+  @keyframes score-fill {
+    from {
+      stroke-dashoffset: 283;
+    }
+  }
+
+  .score-circle {
+    animation: score-fill 1.5s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+/* Additional Animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 10s infinite;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+
+
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
