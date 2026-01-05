@@ -366,7 +366,7 @@ const LandingPage = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-12 border-t border-white/5">
               {[
-                { label: 'Users', value: '1000+' },
+                { label: 'Users', value: '10+' },
                 { label: 'Interviews', value: '5000+' },
                 { label: 'Questions', value: '10k+' },
                 { label: 'Success Rate', value: '98%' },
