@@ -15,9 +15,7 @@ services:
       - key: FIREBASE_SERVICE_ACCOUNT_JSON
         sync: false # User must enter this in dashboard
       - key: GEMINI_API_KEY
-        sync: false
-      - key: SECRET_KEY
-        generateValue: true # Generates a secure random string
+        sync: false # Generates a secure random string
       - key: MAIL_USERNAME
         sync: false
       - key: MAIL_PASSWORD
