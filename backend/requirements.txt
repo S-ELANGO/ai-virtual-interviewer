@@ -9,3 +9,4 @@ python-dotenv
 werkzeug
 reportlab
 gunicorn
+Flask-Mail
