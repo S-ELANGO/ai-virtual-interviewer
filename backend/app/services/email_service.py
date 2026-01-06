@@ -37,8 +37,9 @@ def send_email_with_attachment(recipient_email, subject, body, attachment_path):
         print(f"Warning: Attachment not found at {attachment_path}")
 
     try:
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.starttls()
+        # Use SMTP_SSL on port 465 (preferred for production)
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=10)
+        # server.starttls() # Not needed for SMTP_SSL
         server.login(sender_email, sender_password)
         text = msg.as_string()
         server.sendmail(sender_email, recipient_email, text)
