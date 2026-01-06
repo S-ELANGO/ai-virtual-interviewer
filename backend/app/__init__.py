@@ -8,7 +8,7 @@ def create_app(config_class=Config):
     
     # Initialize CORS
     # Initialize CORS
-    CORS(app, origins="*")
+    CORS(app, resources={r"/*": {"origins": "*"}})
     
     # Initialize Firebase (placeholder for now)
     from app.services.firebase_db import initialize_firebase

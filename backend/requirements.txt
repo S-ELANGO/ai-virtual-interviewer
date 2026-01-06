@@ -8,3 +8,4 @@ gTTS
 python-dotenv
 werkzeug
 reportlab
+gunicorn
