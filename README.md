@@ -1,2 +1,2 @@
-# ai-virtual-interviewer
+# smarthire-ai
 hi how are you 
